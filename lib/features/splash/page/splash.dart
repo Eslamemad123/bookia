@@ -1,6 +1,7 @@
 import 'dart:ui';
 
-import 'package:bookia/core/extentions/navigation.dart';
+import 'package:bookia/core/routes/navigation.dart';
+import 'package:bookia/core/routes/route.dart';
 import 'package:bookia/core/utils/app%20assets.dart';
 import 'package:bookia/core/utils/textStyle.dart';
 import 'package:bookia/features/splash/widget/start_screen_logo.dart';
@@ -19,9 +20,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 1), () {
       // ignore: use_build_context_synchronously
-      pushReplacement(context, Welcom_Screen());
+      pushReplacement(context, Routes.welcom);
     });
     super.initState();
   }

@@ -1,8 +1,9 @@
 import 'package:bookia/components/mainButton.dart';
-import 'package:bookia/core/extentions/navigation.dart';
+import 'package:bookia/core/routes/navigation.dart';
+import 'package:bookia/core/routes/route.dart';
 import 'package:bookia/core/utils/app%20assets.dart';
-import 'package:bookia/features/auth/login/page/loginScreen.dart';
-import 'package:bookia/features/auth/widget/header_auth.dart';
+import 'package:bookia/features/auth/presentation/pages/login/page/loginScreen.dart';
+import 'package:bookia/features/auth/presentation/widget/header_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -29,7 +30,7 @@ class PassChanged_Screen extends StatelessWidget {
           Main_Button(
             title: 'Back To Login',
             onPress: () {
-              pushReplacement(context, Login_Screen());
+              PupushAndRemoveUntilsh(context, Routes.login);
             },
           ),
         ],

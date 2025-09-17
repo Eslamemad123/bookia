@@ -29,13 +29,12 @@ class Text_Style {
     double? Size,
     FontWeight? Font_Weight,
     Color? color,
-    
   }) {
     return TextStyle(
       fontSize: Size ?? 15,
       fontWeight: Font_Weight ?? FontWeight.w400,
       color: color,
-      fontFamily: 'DM Serif Display'
+      fontFamily: 'DM Serif Display',
     );
   }
 

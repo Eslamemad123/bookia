@@ -25,4 +25,7 @@ class App_Assets {
   static const logoSVG = 'assets/images/logo 2.svg';
   static const successMarkSVG = 'assets/images/Successmark.svg';
   static const welcomPNG = 'assets/images/welcom.png';
+
+  static const loadingJson = 'assets/images/loading.json';
+  static const loadingJson2 = 'assets/images/Loading Dots In Yellow.json';
 }

@@ -10,6 +10,6 @@ class App_Color {
   static Color black3 = Color(0xFF606060);
   static Color gold2 = Color(0xFFF5EFE1);
   static Color white = Color(0xFFFFFFFF);
-    static Color borderFormFiled = Color(0xFFE8ECF4);
-
+  static Color borderFormFiled = Color(0xFFE8ECF4);
+  static Color red = Color.fromARGB(255, 255, 91, 91);
 }

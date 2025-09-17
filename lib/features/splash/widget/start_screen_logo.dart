@@ -5,11 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 class startScreenLogo extends StatelessWidget {
-   startScreenLogo({
-    super.key,
-     required this.gap
-  });
-  double?gap;
+  startScreenLogo({super.key, required this.gap});
+  double? gap;
 
   @override
   Widget build(BuildContext context) {

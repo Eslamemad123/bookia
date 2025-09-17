@@ -9,13 +9,13 @@ class Form_Filed extends StatefulWidget {
     super.key,
     this.obscureText = false,
     this.validator,
-    this.onChange,
+    this.controller,
     required this.text,
     this.icon = false,
   });
   bool obscureText;
   final String? Function(String?)? validator;
-  final void Function(String)? onChange;
+  final TextEditingController? controller;
   final String text;
   final bool icon;
   bool eyeIcon = false;
@@ -30,7 +30,7 @@ class _Form_FiledState extends State<Form_Filed> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 22),
       child: TextFormField(
-        onChanged: widget.onChange,
+        controller: widget.controller,
         validator: widget.validator,
         obscureText: widget.obscureText,
         decoration: InputDecoration(
