@@ -1,3 +1,3 @@
-# bookia
+# Bookia
 
-A new Flutter project.
+>Splash Screen  
