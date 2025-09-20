@@ -30,17 +30,16 @@ class _ForgetPass_ScreenState extends State<ForgetPass_Screen> {
     return Scaffold(
       appBar: App_Bar(leading: true),
       body: BlocConsumer<Auth_Cubit, Auth_State>(
-        listener: (context,state){
+        listener: (context, state) {
           if (state is AuthSuccessState) {
-      pushReplacement(context, Routes.OTP);
-      cubit.isLoading = false;
-    } else if (state is AuthErrorState) {
-      showErrorDialog(context, 'Error Email Reset Apssword');
-      cubit.isLoading = false;
-    } else {
-      cubit.isLoading = true;
-    }
-
+            pushReplacement(context, Routes.OTP);
+            cubit.isLoading = false;
+          } else if (state is AuthErrorState) {
+            showErrorDialog(context, 'Error Email Reset Apssword');
+            cubit.isLoading = false;
+          } else {
+            cubit.isLoading = true;
+          }
         },
         builder: (context, state) {
           return Padding(

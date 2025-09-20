@@ -20,6 +20,7 @@ class App_Bar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0,
       automaticallyImplyLeading: false,
       backgroundColor: App_Color.white,
       title: Text(title, style: Text_Style.getText25()),

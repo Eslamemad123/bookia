@@ -116,7 +116,7 @@ class _Register_ScreenState extends State<Register_Screen> {
   void _Check_StateListener(BuildContext context, Auth_State state) {
     var cubit = context.read<Auth_Cubit>();
     if (state is AuthSuccessState) {
-      pushTo(context, Routes.Home);
+      pushReplacement(context, Routes.login);
       cubit.isLoading = false;
     } else if (state is AuthErrorState) {
       showErrorDialog(context, 'Erroooooooooor');

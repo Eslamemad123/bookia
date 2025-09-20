@@ -13,8 +13,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class NewPassword_Screen extends StatefulWidget {
-  NewPassword_Screen({super.key,required this.otp});
-TextEditingController otp;
+  NewPassword_Screen({super.key, required this.otp});
+  TextEditingController otp;
   @override
   State<NewPassword_Screen> createState() => _NewPassword_ScreenState();
 }
@@ -78,7 +78,7 @@ class _NewPassword_ScreenState extends State<NewPassword_Screen> {
                   title: 'Reset Password',
                   onPress: () {
                     if (cubit.FormKeyNewPass.currentState?.validate() ?? true) {
-                      cubit.OTP=widget.otp;
+                      cubit.OTP = widget.otp;
                       cubit.new_password();
                     }
                   },

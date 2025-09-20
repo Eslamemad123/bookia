@@ -7,7 +7,7 @@ class AuthParams {
   String? password;
   String? confirm_password;
   int? verify_code;
-    String? Newpassword;
+  String? Newpassword;
   String? confirm_Newpassword;
 
   AuthParams({

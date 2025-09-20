@@ -1,18 +1,18 @@
 import 'data.dart';
 
-class AuthResponse {
-  User_Data? data;
+class Books_Response {
+  Data? data;
   String? message;
   List<dynamic>? error;
   num? status;
 
-  AuthResponse({this.data, this.message, this.error, this.status});
+  Books_Response({this.data, this.message, this.error, this.status});
 
-  factory AuthResponse.fromJson(Map<String, dynamic> json) => AuthResponse(
+  factory Books_Response.fromJson(Map<String, dynamic> json) => Books_Response(
     data:
         json['data'] == null
             ? null
-            : User_Data.fromJson(Map<String, dynamic>.from(json['data'])),
+            : Data.fromJson(Map<String, dynamic>.from(json['data'])),
     message: json['message']?.toString(),
     error: List<dynamic>.from(json['error'] ?? []),
     status: num.tryParse(json['status'].toString()),

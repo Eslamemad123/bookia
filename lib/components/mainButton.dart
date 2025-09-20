@@ -12,17 +12,24 @@ class Main_Button extends StatelessWidget {
     this.width = double.infinity,
     required this.onPress,
     this.isLoading = false,
+    this.color,
+    this.radius,
+    this.padding = 22,
   });
+
   final double? height;
   final double? width;
   final String? title;
   final Function() onPress;
   final bool isLoading;
+  final Color? color;
+  final double? radius;
+  final double padding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 22),
+      padding: EdgeInsets.symmetric(horizontal: padding),
       child: SizedBox(
         width: width,
         height: height,
@@ -37,9 +44,9 @@ class Main_Button extends StatelessWidget {
                   ),
           style: ElevatedButton.styleFrom(
             elevation: 0,
-            backgroundColor: App_Color.goldPrimary,
+            backgroundColor: color ?? App_Color.goldPrimary,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(radius ?? 8),
             ),
           ),
         ),

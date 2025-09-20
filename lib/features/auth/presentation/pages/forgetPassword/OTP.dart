@@ -54,7 +54,7 @@ class OTP_Screen extends StatelessWidget {
       body: BlocConsumer<Auth_Cubit, Auth_State>(
         listener: (context, state) {
           if (state is AuthSuccessState) {
-            pushReplacement(context, Routes.createNewPassword,cubit.OTP);
+            pushReplacement(context, Routes.createNewPassword, cubit.OTP);
             cubit.isLoading = false;
           } else if (state is AuthErrorState) {
             showErrorDialog(context, 'OTP is incorrect');

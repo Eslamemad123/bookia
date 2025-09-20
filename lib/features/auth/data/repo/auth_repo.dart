@@ -72,40 +72,34 @@ class Auth_Repo {
 
   static Future<ForgetPassResponse?> check_OTP(AuthParams params) async {
     try {
-
       var res = await Dio_Provider.Post(
         endPoint: API_EndPoint.OTP,
         data: params.tojson(),
       );
 
       if (res.statusCode == 200) {
-
         return ForgetPassResponse.fromJson(res.data);
       } else {
-
         return null;
       }
     } on Exception catch (e) {
-
       log(e.toString());
     }
   }
 
   static Future<AuthResponse?> new_password(AuthParams params) async {
     try {
-  var res = await Dio_Provider.Post(
-    endPoint: API_EndPoint.newPassword,
-    data: params.tojson(),
-  );
-   if (res.statusCode == 200) {
-  
-      return AuthResponse.fromJson(res.data);
-    } else {
-  
-      return null;
+      var res = await Dio_Provider.Post(
+        endPoint: API_EndPoint.newPassword,
+        data: params.tojson(),
+      );
+      if (res.statusCode == 200) {
+        return AuthResponse.fromJson(res.data);
+      } else {
+        return null;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
     }
-} on Exception catch (e) {
-  log(e.toString());
-}
   }
 }
