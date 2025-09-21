@@ -31,7 +31,7 @@ class _NewPassword_ScreenState extends State<NewPassword_Screen> {
             pushTo(context, Routes.passwordChanged);
             cubit.isLoading = false;
           } else if (state is AuthErrorState) {
-            showErrorDialog(context, 'new password error');
+            showErrorDialog(context, state.error);
             cubit.isLoading = false;
           } else {
             cubit.isLoading = true;

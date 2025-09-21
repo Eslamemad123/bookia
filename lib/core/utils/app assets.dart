@@ -18,6 +18,8 @@ class App_Assets {
   static const profileSVG = 'assets/icons/Profile.svg';
   static const searchSVG = 'assets/icons/search.svg';
   static const showPasswordSVG = 'assets/icons/show_password.svg';
+  static const Filter = 'assets/icons/filter.svg';
+
 
   // 📂 Images
   static const bookPNG = 'assets/images/book.png';

@@ -119,7 +119,7 @@ class _Register_ScreenState extends State<Register_Screen> {
       pushReplacement(context, Routes.login);
       cubit.isLoading = false;
     } else if (state is AuthErrorState) {
-      showErrorDialog(context, 'Erroooooooooor');
+      showErrorDialog(context, state.error);
       cubit.isLoading = false;
     } else {
       cubit.isLoading = true;

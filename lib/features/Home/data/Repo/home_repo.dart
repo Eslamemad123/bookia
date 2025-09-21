@@ -58,16 +58,24 @@ class Home_Repo {
       log(e.toString());
     }
   }
-  static Future<Books_Response?> searchHome(String title) async {
+
+  static Future<Books_Response?> searchHome(
+    String title,
+    double max,
+    double min,
+  ) async {
     try {
-      var res = await Dio_Provider.Get(endPoint: API_EndPoint.Search+title);
+      var res = await Dio_Provider.Get(
+        endPoint: API_EndPoint.SearchWithfilter,
+        queryParameters: {'max': max, 'min': min, 'search': title},
+      );
       if (res.statusCode == 200) {
         return Books_Response.fromJson(res.data);
       } else {
         return null;
       }
     } on Exception catch (e) {
-     log(e.toString());
+      log(e.toString());
     }
   }
 }

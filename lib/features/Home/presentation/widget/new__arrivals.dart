@@ -26,7 +26,7 @@ class New_Arrive extends StatelessWidget {
                 overlayColor: WidgetStateProperty.all(App_Color.gold2),
               ),
               onPressed: () {
-                                pushTo(context, Routes.SeeAll,{'product':product,'title':'Best Saller'});
+                                pushTo(context, Routes.SeeAll,{'product':product,'title':'New Arrivals'});
 
               },
               child: Text(

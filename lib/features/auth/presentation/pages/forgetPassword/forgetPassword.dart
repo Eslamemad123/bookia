@@ -35,7 +35,7 @@ class _ForgetPass_ScreenState extends State<ForgetPass_Screen> {
             pushReplacement(context, Routes.OTP);
             cubit.isLoading = false;
           } else if (state is AuthErrorState) {
-            showErrorDialog(context, 'Error Email Reset Apssword');
+            showErrorDialog(context, state.error);
             cubit.isLoading = false;
           } else {
             cubit.isLoading = true;

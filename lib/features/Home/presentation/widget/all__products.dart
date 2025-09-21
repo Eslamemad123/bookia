@@ -26,7 +26,7 @@ class All_Products extends StatelessWidget {
                 overlayColor: WidgetStateProperty.all(App_Color.gold2),
               ),
               onPressed: () {
-                                pushTo(context, Routes.SeeAll,{'product':product,'title':'Best Saller'});
+                                pushTo(context, Routes.SeeAll,{'product':product,'title':'All Books'});
 
               },
               child: Text(

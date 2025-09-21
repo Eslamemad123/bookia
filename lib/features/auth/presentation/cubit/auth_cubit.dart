@@ -6,6 +6,7 @@ import 'package:bookia/core/services/API/dio_provider.dart';
 import 'package:bookia/core/services/local/LocalHelper.dart';
 import 'package:bookia/features/auth/data/models/request/auth_parms.dart';
 import 'package:bookia/features/auth/data/models/response/auth_response/auth_response.dart';
+import 'package:bookia/features/auth/data/models/response/forgetPassResponse/forget_pass_response/forget_pass_response.dart';
 import 'package:bookia/features/auth/data/repo/auth_repo.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_state.dart';
 import 'package:flutter/material.dart';
@@ -46,11 +47,11 @@ class Auth_Cubit extends Cubit<Auth_State> {
     );
     var res = await Auth_Repo.login(params);
 
-    if (res != null) {
+    if (res is AuthResponse) {
       Local_helper.setUserData(res.data);
       emit(AuthSuccessState());
     } else {
-      emit(AuthErrorState('error'));
+      emit(AuthErrorState(res[0]));
     }
   }
 
@@ -66,10 +67,10 @@ class Auth_Cubit extends Cubit<Auth_State> {
       name: name.text,
     );
     var res = await Auth_Repo.register(params);
-    if (res != null) {
+    if (res is AuthResponse) {
       emit(AuthSuccessState());
     } else {
-      emit(AuthErrorState('error'));
+      emit(AuthErrorState(res[0]));
     }
   }
 
@@ -77,10 +78,10 @@ class Auth_Cubit extends Cubit<Auth_State> {
     emit(AuthLoadingState());
     var params = AuthParams(email: emailForgetPassword.text);
     var res = await Auth_Repo.forget_password(params);
-    if (res != null) {
+    if (res is ForgetPassResponse) {
       emit(AuthSuccessState());
     } else {
-      emit(AuthErrorState('error forget password'));
+      emit(AuthErrorState(res[0]));
     }
   }
 
@@ -111,10 +112,10 @@ class Auth_Cubit extends Cubit<Auth_State> {
 
     var res = await Auth_Repo.new_password(params);
 
-    if (res != null) {
+    if (res is AuthResponse) {
       emit(AuthSuccessState());
     } else {
-      emit(AuthErrorState('error new password'));
+      emit(AuthErrorState(res[0]));
     }
   }
 }

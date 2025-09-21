@@ -1,5 +1,5 @@
 import 'package:bookia/features/Home/data/model/books_response/product.dart';
-import 'package:bookia/features/Home/presentation/pages/search.dart';
+import 'package:bookia/features/Home/presentation/pages/search/page/search.dart';
 import 'package:bookia/features/Home/presentation/pages/seeAllProducts.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/presentation/pages/forgetPassword/OTP.dart';

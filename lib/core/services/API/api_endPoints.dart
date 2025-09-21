@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bookia/features/Home/data/Repo/home_repo.dart';
 
 class API_EndPoint {
@@ -17,5 +19,7 @@ class API_EndPoint {
 
   static const String Slider = '/sliders';
   static const String Search = '/products-search?name=';
+  static const String SearchWithfilter = '/products-filter';
+
 
 }

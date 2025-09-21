@@ -184,7 +184,7 @@ class _Login_ScreenState extends State<Login_Screen> {
       cubit.isLoading = false;
     } else if (state is AuthErrorState) {
       //Pop(context);
-      showErrorDialog(context, 'Erroooooooooor');
+      showErrorDialog(context, state.error);
       cubit.isLoading = false;
       // Pop(context);
     } else {

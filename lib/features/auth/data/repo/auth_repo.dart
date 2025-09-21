@@ -8,7 +8,7 @@ import 'package:bookia/features/auth/data/models/response/forgetPassResponse/for
 import 'package:dio/dio.dart';
 
 class Auth_Repo {
-  static Future<AuthResponse?> login(AuthParams params) async {
+  static Future<dynamic?> login(AuthParams params) async {
     try {
       var res = await Dio_Provider.Post(
         endPoint: API_EndPoint.login,
@@ -19,12 +19,21 @@ class Auth_Repo {
       } else {
         return null;
       }
-    } on Exception catch (e) {
-      log(e.toString());
-    }
+    } on DioException catch (e) {
+      ('Dio error: ${e.response?.statusCode}');
+      if (e.response?.data['errors'] == null) {
+        List<String> error = ['Validation Error'];
+
+        return error;
+      } else if (e.response?.data['errors']['email'] != null) {
+        return e.response?.data['errors']['email'];
+      } else if (e.response?.data['errors']['password'] != null) {
+        return e.response?.data['errors']['password'];
+      }
+    } catch (e) {}
   }
 
-  static Future<AuthResponse?> register(AuthParams params) async {
+  static Future<dynamic?> register(AuthParams params) async {
     try {
       var res = await Dio_Provider.Post(
         endPoint: API_EndPoint.register,
@@ -38,36 +47,43 @@ class Auth_Repo {
         return null;
       }
     } on DioException catch (e) {
-      log('Dio error: ${e.response?.statusCode}');
-      log('Error data: ${e.response?.data}');
-    } catch (e) {
-      log('Unexpected error: $e');
-    }
+      ('Dio error: ${e.response?.statusCode}');
+      if (e.response?.data['errors'] == null) {
+        List<String> error = ['Validation Error'];
+
+        return error;
+      } else if (e.response?.data['errors']['email'] != null) {
+        return e.response?.data['errors']['email'];
+      } else if (e.response?.data['errors']['password'] != null) {
+        return e.response?.data['errors']['password'];
+      }
+    } catch (e) {}
   }
 
-  static Future<ForgetPassResponse?> forget_password(AuthParams params) async {
+  static Future<dynamic?> forget_password(AuthParams params) async {
     try {
-      log('--1--');
       var res = await Dio_Provider.Post(
         endPoint: API_EndPoint.forgetPassword,
         data: params.tojson(),
       );
-      log('--2--');
 
       if (res.statusCode == 200) {
-        log('--3--');
-
         return ForgetPassResponse.fromJson(res.data);
       } else {
-        log('--4--');
-
         return null;
       }
-    } on Exception catch (e) {
-      log('--5--');
+    } on DioException catch (e) {
+      ('Dio error: ${e.response?.statusCode}');
+      if (e.response?.data['errors'] == null) {
+        List<String> error = ['Validation Error'];
 
-      log(e.toString());
-    }
+        return error;
+      } else if (e.response?.data['errors']['email'] != null) {
+        return e.response?.data['errors']['email'];
+      } else if (e.response?.data['errors']['password'] != null) {
+        return e.response?.data['errors']['password'];
+      }
+    } catch (e) {}
   }
 
   static Future<ForgetPassResponse?> check_OTP(AuthParams params) async {
@@ -87,7 +103,7 @@ class Auth_Repo {
     }
   }
 
-  static Future<AuthResponse?> new_password(AuthParams params) async {
+  static Future<dynamic?> new_password(AuthParams params) async {
     try {
       var res = await Dio_Provider.Post(
         endPoint: API_EndPoint.newPassword,
@@ -98,8 +114,17 @@ class Auth_Repo {
       } else {
         return null;
       }
-    } on Exception catch (e) {
-      log(e.toString());
-    }
+    } on DioException catch (e) {
+      ('Dio error: ${e.response?.statusCode}');
+      if (e.response?.data['errors'] == null) {
+        List<String> error = ['Validation Error'];
+
+        return error;
+      } else if (e.response?.data['errors']['email'] != null) {
+        return e.response?.data['errors']['email'];
+      } else if (e.response?.data['errors']['password'] != null) {
+        return e.response?.data['errors']['password'];
+      }
+    } catch (e) {}
   }
 }

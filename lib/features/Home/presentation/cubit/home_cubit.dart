@@ -18,7 +18,12 @@ class Home_Cubit extends Cubit<Home_States> {
   List<Slider_Model> Slider = [];
   List<Product> Search = [];
 
-  final TextEditingController searchTitle=TextEditingController();
+  bool searchFilter=false;
+
+  double lowerValueSearch = 0;
+  double upperValueSearch = 600;
+
+  final TextEditingController searchTitle = TextEditingController();
   Future<void> getHomeData() async {
     emit(HomeLoadingState());
 
@@ -43,20 +48,22 @@ class Home_Cubit extends Cubit<Home_States> {
     }
   }
 
-
   Future<void> getSearchData(String title) async {
     emit(HomeLoadingState());
     try {
+      log('************* $lowerValueSearch   $upperValueSearch');
 
-      var res = await Home_Repo.searchHome(title);
+      var res = await Home_Repo.searchHome(
+        title,
+        upperValueSearch,
+        lowerValueSearch,
+      );
       if (res == null) {
-      } else {
-      }
+      } else {}
 
       Search = (res as Books_Response).data?.products ?? [];
       emit(HomeSuccessState());
     } on Exception catch (e) {
-
       emit(HomeErrorState());
       log(e.toString());
     }
