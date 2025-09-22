@@ -1,6 +1,6 @@
 # Bookia
 
-## to watch video scree from Bokia App click on this link.
+## to watch video screen from Bokia App click on this link.
 ### https://drive.google.com/file/d/1jt45D0Z7hmB3fQa_kdQnOGF5pCb-oIua/view?usp=sharing
 
 
