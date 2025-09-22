@@ -15,7 +15,7 @@ class App_Bar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool leading;
   final bool action;
-  final Icon? icon;
+  final String? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class App_Bar extends StatelessWidget implements PreferredSizeWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: icon ?? Icon(Icons.do_disturb),
+                    icon: SvgPicture.asset(icon ?? App_Assets.cartSVG),
                   ),
                 ),
               ]

@@ -8,7 +8,7 @@ import 'package:bookia/features/auth/data/models/response/forgetPassResponse/for
 import 'package:dio/dio.dart';
 
 class Auth_Repo {
-  static Future<dynamic?> login(AuthParams params) async {
+  static Future<dynamic> login(AuthParams params) async {
     try {
       var res = await Dio_Provider.Post(
         endPoint: API_EndPoint.login,
@@ -30,10 +30,10 @@ class Auth_Repo {
       } else if (e.response?.data['errors']['password'] != null) {
         return e.response?.data['errors']['password'];
       }
-    } catch (e) {}
+    }
   }
 
-  static Future<dynamic?> register(AuthParams params) async {
+  static Future<dynamic> register(AuthParams params) async {
     try {
       var res = await Dio_Provider.Post(
         endPoint: API_EndPoint.register,
@@ -57,10 +57,10 @@ class Auth_Repo {
       } else if (e.response?.data['errors']['password'] != null) {
         return e.response?.data['errors']['password'];
       }
-    } catch (e) {}
+    }
   }
 
-  static Future<dynamic?> forget_password(AuthParams params) async {
+  static Future<dynamic> forget_password(AuthParams params) async {
     try {
       var res = await Dio_Provider.Post(
         endPoint: API_EndPoint.forgetPassword,
@@ -83,7 +83,7 @@ class Auth_Repo {
       } else if (e.response?.data['errors']['password'] != null) {
         return e.response?.data['errors']['password'];
       }
-    } catch (e) {}
+    }
   }
 
   static Future<ForgetPassResponse?> check_OTP(AuthParams params) async {
@@ -101,9 +101,10 @@ class Auth_Repo {
     } on Exception catch (e) {
       log(e.toString());
     }
+    return null;
   }
 
-  static Future<dynamic?> new_password(AuthParams params) async {
+  static Future<dynamic> new_password(AuthParams params) async {
     try {
       var res = await Dio_Provider.Post(
         endPoint: API_EndPoint.newPassword,
@@ -118,13 +119,10 @@ class Auth_Repo {
       ('Dio error: ${e.response?.statusCode}');
       if (e.response?.data['errors'] == null) {
         List<String> error = ['Validation Error'];
-
         return error;
-      } else if (e.response?.data['errors']['email'] != null) {
-        return e.response?.data['errors']['email'];
-      } else if (e.response?.data['errors']['password'] != null) {
-        return e.response?.data['errors']['password'];
+      } else if (e.response?.data['errors']['new_password'] != null) {
+        return e.response?.data['errors']['new_password'];
       }
-    } catch (e) {}
+    }
   }
 }

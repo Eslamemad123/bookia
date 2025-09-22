@@ -5,7 +5,6 @@ import 'package:bookia/core/routes/navigation.dart';
 import 'package:bookia/core/routes/route.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_state.dart';
-import 'package:bookia/features/auth/presentation/pages/forgetPassword/passChanged.dart';
 import 'package:bookia/components/form_filed.dart';
 import 'package:bookia/features/auth/presentation/widget/header_auth.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +57,7 @@ class _NewPassword_ScreenState extends State<NewPassword_Screen> {
                     if (value!.isEmpty ?? false) {
                       return 'Please Enter New Password';
                     }
+                    return null;
                   },
                 ),
                 Gap(20),
@@ -70,6 +70,7 @@ class _NewPassword_ScreenState extends State<NewPassword_Screen> {
                     if (value!.isEmpty ?? false) {
                       return 'Please Enter Confirm Password';
                     }
+                    return null;
                   },
                 ),
                 Gap(40),

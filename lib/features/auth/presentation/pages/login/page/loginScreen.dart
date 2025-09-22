@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bookia/components/app__bar.dart';
 import 'package:bookia/components/mainButton.dart';
 import 'package:bookia/core/extentions/dialogs.dart';
@@ -10,20 +8,17 @@ import 'package:bookia/core/utils/app%20color.dart';
 import 'package:bookia/core/utils/textStyle.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_state.dart';
-import 'package:bookia/features/auth/presentation/pages/forgetPassword/forgetPassword.dart';
 import 'package:bookia/features/auth/presentation/pages/login/widget/logo_login.dart';
-import 'package:bookia/features/auth/presentation/pages/register/Register.dart';
 import 'package:bookia/components/form_filed.dart';
 import 'package:bookia/features/auth/presentation/widget/header_auth.dart';
 import 'package:bookia/features/auth/presentation/widget/rich_text_auth.dart';
-import 'package:bookia/features/welcom/welcom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 class Login_Screen extends StatefulWidget {
-  Login_Screen({super.key});
+  const Login_Screen({super.key});
 
   @override
   State<Login_Screen> createState() => _Login_ScreenState();
@@ -56,6 +51,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                       if (value!.isEmpty ?? true) {
                         return 'Please enter your Email';
                       }
+                      return null;
                     },
                   ),
                   Gap(25),
@@ -69,6 +65,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                       if (value!.isEmpty ?? true) {
                         return 'Please enter your Password';
                       }
+                      return null;
                     },
                   ),
                   Gap(15),

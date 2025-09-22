@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class App_Assets {
   // 📂 Icons
   static const appleLogoSVG = 'assets/icons/apple_logo.svg';
@@ -19,7 +17,6 @@ class App_Assets {
   static const searchSVG = 'assets/icons/search.svg';
   static const showPasswordSVG = 'assets/icons/show_password.svg';
   static const Filter = 'assets/icons/filter.svg';
-
 
   // 📂 Images
   static const bookPNG = 'assets/images/book.png';

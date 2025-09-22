@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class Header_Auth extends StatelessWidget {
-  Header_Auth({
+  const Header_Auth({
     super.key,
     required this.title,
     this.subTitle,

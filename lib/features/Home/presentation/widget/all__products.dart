@@ -1,7 +1,5 @@
-import 'package:bookia/components/mainButton.dart';
 import 'package:bookia/core/routes/navigation.dart';
 import 'package:bookia/core/routes/route.dart';
-import 'package:bookia/core/utils/app%20assets.dart';
 import 'package:bookia/core/utils/app%20color.dart';
 import 'package:bookia/core/utils/textStyle.dart';
 import 'package:bookia/features/Home/data/model/books_response/product.dart';
@@ -26,8 +24,10 @@ class All_Products extends StatelessWidget {
                 overlayColor: WidgetStateProperty.all(App_Color.gold2),
               ),
               onPressed: () {
-                                pushTo(context, Routes.SeeAll,{'product':product,'title':'All Books'});
-
+                pushTo(context, Routes.SeeAll, {
+                  'product': product,
+                  'title': 'All Books',
+                });
               },
               child: Text(
                 'See All',
@@ -43,7 +43,7 @@ class All_Products extends StatelessWidget {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return CardAllProduct(product: product[index]);
+              return CardAllProduct(product: product[index],title: 'AllProduct',);
             },
             separatorBuilder: (context, index) => Gap(15),
             itemCount: product.length,

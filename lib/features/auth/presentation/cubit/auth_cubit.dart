@@ -1,8 +1,6 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:bookia/core/services/API/api_endPoints.dart';
-import 'package:bookia/core/services/API/dio_provider.dart';
 import 'package:bookia/core/services/local/LocalHelper.dart';
 import 'package:bookia/features/auth/data/models/request/auth_parms.dart';
 import 'package:bookia/features/auth/data/models/response/auth_response/auth_response.dart';

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bookia/components/app__bar.dart';
 import 'package:bookia/components/mainButton.dart';
 import 'package:bookia/core/extentions/dialogs.dart';
@@ -7,17 +5,15 @@ import 'package:bookia/core/routes/navigation.dart';
 import 'package:bookia/core/routes/route.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_state.dart';
-import 'package:bookia/features/auth/presentation/pages/login/page/loginScreen.dart';
 import 'package:bookia/components/form_filed.dart';
 import 'package:bookia/features/auth/presentation/widget/header_auth.dart';
 import 'package:bookia/features/auth/presentation/widget/rich_text_auth.dart';
-import 'package:bookia/features/welcom/welcom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class Register_Screen extends StatefulWidget {
-  Register_Screen({super.key});
+  const Register_Screen({super.key});
 
   @override
   State<Register_Screen> createState() => _Register_ScreenState();
@@ -49,6 +45,7 @@ class _Register_ScreenState extends State<Register_Screen> {
                       if (value!.isEmpty ?? true) {
                         return 'Please enter your name';
                       }
+                      return null;
                     },
                   ),
                   Gap(15),
@@ -59,6 +56,7 @@ class _Register_ScreenState extends State<Register_Screen> {
                       if (value!.isEmpty ?? true) {
                         return 'Please enter your name';
                       }
+                      return null;
                     },
                   ),
                   Gap(15),
@@ -71,6 +69,7 @@ class _Register_ScreenState extends State<Register_Screen> {
                       if (value!.isEmpty ?? true) {
                         return 'Please enter your name';
                       }
+                      return null;
                     },
                   ),
                   Gap(15),
@@ -83,6 +82,7 @@ class _Register_ScreenState extends State<Register_Screen> {
                       if (value!.isEmpty ?? true) {
                         return 'Please enter your name';
                       }
+                      return null;
                     },
                   ),
                   Gap(40),

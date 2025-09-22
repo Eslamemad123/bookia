@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class Main_Button extends StatelessWidget {
-  Main_Button({
+  const Main_Button({
     super.key,
     required this.title,
     this.height = 60,
@@ -35,13 +35,6 @@ class Main_Button extends StatelessWidget {
         height: height,
         child: ElevatedButton(
           onPressed: onPress,
-          child:
-              isLoading
-                  ? Lottie.asset(App_Assets.loadingJson2)
-                  : Text(
-                    title!,
-                    style: Text_Style.getText15(color: App_Color.white),
-                  ),
           style: ElevatedButton.styleFrom(
             elevation: 0,
             backgroundColor: color ?? App_Color.goldPrimary,
@@ -49,6 +42,13 @@ class Main_Button extends StatelessWidget {
               borderRadius: BorderRadius.circular(radius ?? 8),
             ),
           ),
+          child:
+              isLoading
+                  ? Lottie.asset(App_Assets.loadingJson2)
+                  : Text(
+                    title!,
+                    style: Text_Style.getText15(color: App_Color.white),
+                  ),
         ),
       ),
     );

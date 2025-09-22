@@ -1,14 +1,11 @@
-import 'package:bookia/components/mainButton.dart';
 import 'package:bookia/core/routes/navigation.dart';
 import 'package:bookia/core/routes/route.dart';
 import 'package:bookia/core/utils/app%20assets.dart';
 import 'package:bookia/core/utils/app%20color.dart';
-import 'package:bookia/core/utils/textStyle.dart';
 import 'package:bookia/features/Home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/features/Home/presentation/cubit/homw_state.dart';
 import 'package:bookia/features/Home/presentation/widget/all__products.dart';
 import 'package:bookia/features/Home/presentation/widget/best__seller.dart';
-import 'package:bookia/features/Home/presentation/widget/book__card.dart';
 import 'package:bookia/features/Home/presentation/widget/home__slider.dart';
 import 'package:bookia/features/Home/presentation/widget/new__arrivals.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +31,7 @@ class Home_Screen extends StatelessWidget {
                 overlayColor: WidgetStateProperty.all(App_Color.gold2),
               ),
               onPressed: () {
-                pushTo(context, Routes.search,);
+                pushTo(context, Routes.search);
               },
               icon: SvgPicture.asset(App_Assets.searchSVG),
             ),
@@ -57,7 +54,7 @@ class Home_Screen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    Home_Slider(slider: cubit.Slider,),
+                    Home_Slider(slider: cubit.Slider),
                     Gap(20),
                     Best_Seller(product: cubit.BestSaller),
                     Gap(20),

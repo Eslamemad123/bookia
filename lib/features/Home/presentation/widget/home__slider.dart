@@ -1,14 +1,12 @@
-import 'package:bookia/core/utils/app%20assets.dart';
 import 'package:bookia/core/utils/app%20color.dart';
 import 'package:bookia/features/Home/data/model/SliderResponse/slider_resbonse/slider.dart';
-import 'package:bookia/features/Home/data/model/books_response/books_response.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Home_Slider extends StatefulWidget {
-  Home_Slider({super.key,required this.slider});
+  Home_Slider({super.key, required this.slider});
   List<Slider_Model> slider;
   @override
   State<Home_Slider> createState() => _Home_SliderState();
@@ -18,6 +16,7 @@ class _Home_SliderState extends State<Home_Slider> {
   @override
   int CurrentIndex = 0;
 
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [Gap(10), Curouse_Slider(), Gap(10), Smooth_Effect()],
@@ -48,7 +47,8 @@ class _Home_SliderState extends State<Home_Slider> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
-                widget.slider[CurrentIndex].image??'https://assets.tracegains.net/resources/img/global/no_image.jpg',
+                widget.slider[CurrentIndex].image ??
+                    'https://assets.tracegains.net/resources/img/global/no_image.jpg',
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),

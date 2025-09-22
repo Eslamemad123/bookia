@@ -1,4 +1,5 @@
 import 'package:bookia/features/Home/data/model/books_response/product.dart';
+import 'package:bookia/features/Home/presentation/pages/DetailsBook.dart';
 import 'package:bookia/features/Home/presentation/pages/search/page/search.dart';
 import 'package:bookia/features/Home/presentation/pages/seeAllProducts.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_cubit.dart';
@@ -13,7 +14,6 @@ import 'package:bookia/features/main/presentation/page/main_screen.dart';
 import 'package:bookia/features/splash/page/splash.dart';
 import 'package:bookia/features/welcom/welcom.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,6 +30,7 @@ class Routes {
   static const String Home = '/home';
   static const String SeeAll = '/see_all';
   static const String search = '/search';
+  static const String Details = '/details';
 
   static final routes = GoRouter(
     routes: [
@@ -101,8 +102,14 @@ class Routes {
           return See_All(product: product, title: title);
         },
       ),
-       GoRoute(path: search, builder: (context, state) => Search_Book()),
-
+      GoRoute(path: search, builder: (context, state) => Search_Book()),
+      GoRoute(
+        path: Details,
+        builder: (context, state) {
+          var data = state.extra as Map<String, dynamic>;
+          return Details_Book(product: data['product'], title: data['sourse']);
+        },
+      ),
     ],
   );
 }

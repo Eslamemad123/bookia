@@ -14,9 +14,10 @@ class Home_Repo {
       } else {
         return null;
       }
-    } on Exception catch (e) {
+    } on Exception {
       // TODO
     }
+    return null;
   }
 
   static Future<Books_Response?> allBooks() async {
@@ -27,9 +28,10 @@ class Home_Repo {
       } else {
         return null;
       }
-    } on Exception catch (e) {
+    } on Exception {
       // TODO
     }
+    return null;
   }
 
   static Future<Books_Response?> newArrivails() async {
@@ -40,9 +42,10 @@ class Home_Repo {
       } else {
         return null;
       }
-    } on Exception catch (e) {
+    } on Exception {
       // TODO
     }
+    return null;
   }
 
   static Future<SliderResbonse?> getSlider() async {
@@ -57,6 +60,7 @@ class Home_Repo {
     } on Exception catch (e) {
       log(e.toString());
     }
+    return null;
   }
 
   static Future<Books_Response?> searchHome(
@@ -77,5 +81,6 @@ class Home_Repo {
     } on Exception catch (e) {
       log(e.toString());
     }
+    return null;
   }
 }

@@ -5,9 +5,6 @@ import 'package:bookia/core/routes/navigation.dart';
 import 'package:bookia/core/routes/route.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_state.dart';
-import 'package:bookia/features/auth/presentation/pages/login/page/loginScreen.dart';
-import 'package:bookia/features/auth/presentation/pages/forgetPassword/newPassword.dart';
-import 'package:bookia/features/auth/presentation/pages/forgetPassword/OTP.dart';
 import 'package:bookia/components/form_filed.dart';
 import 'package:bookia/features/auth/presentation/widget/header_auth.dart';
 import 'package:bookia/features/auth/presentation/widget/rich_text_auth.dart';
@@ -16,7 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class ForgetPass_Screen extends StatefulWidget {
-  ForgetPass_Screen({super.key});
+  const ForgetPass_Screen({super.key});
 
   @override
   State<ForgetPass_Screen> createState() => _ForgetPass_ScreenState();
@@ -62,6 +59,7 @@ class _ForgetPass_ScreenState extends State<ForgetPass_Screen> {
                       if (value!.isEmpty ?? false) {
                         return 'Please Enter Your Email';
                       }
+                      return null;
                     },
                   ),
                   Gap(40),

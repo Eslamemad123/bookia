@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 class AuthParams {
   //conversion from object to json
   String? name;

@@ -8,7 +8,6 @@ import 'package:bookia/core/routes/route.dart';
 import 'package:bookia/core/utils/app%20color.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_state.dart';
-import 'package:bookia/features/auth/presentation/pages/forgetPassword/newPassword.dart';
 import 'package:bookia/features/auth/presentation/widget/header_auth.dart';
 import 'package:bookia/features/auth/presentation/widget/rich_text_auth.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +16,9 @@ import 'package:gap/gap.dart';
 import 'package:pinput/pinput.dart';
 
 class OTP_Screen extends StatelessWidget {
-  OTP_Screen({super.key});
+  const OTP_Screen({super.key});
 
+  @override
   Widget build(BuildContext context) {
     var cubit = context.read<Auth_Cubit>();
     final defaultPinTheme = PinTheme(
@@ -87,6 +87,7 @@ class OTP_Screen extends StatelessWidget {
                         if (value!.isEmpty ?? true) {
                           return 'Please enter OTP';
                         }
+                        return null;
                       },
                       pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
                       showCursor: true,

@@ -1,9 +1,5 @@
-import 'dart:developer';
-
 import 'package:bookia/components/app__bar.dart';
-import 'package:bookia/core/utils/app%20assets.dart';
 import 'package:bookia/core/utils/app%20color.dart';
-import 'package:bookia/core/utils/textStyle.dart';
 import 'package:bookia/features/Home/data/model/books_response/product.dart';
 import 'package:bookia/features/Home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/features/Home/presentation/cubit/homw_state.dart';
@@ -13,12 +9,10 @@ import 'package:bookia/features/Home/presentation/pages/search/widget/text_form.
 import 'package:bookia/features/Home/presentation/widget/card_all_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:gap/gap.dart';
 
 class Search_Book extends StatefulWidget {
-  Search_Book({super.key});
+  const Search_Book({super.key});
 
   @override
   State<Search_Book> createState() => _Search_BookState();
@@ -69,7 +63,7 @@ class _Search_BookState extends State<Search_Book> {
                           Gap(20),
                           (cubit.searchFilter)
                               ? SliderFilter(cubit: cubit)
-                              : const SizedBox(), 
+                              : const SizedBox(),
                         ],
                       ),
                     ),
@@ -90,7 +84,7 @@ class _Search_BookState extends State<Search_Book> {
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return CardAllProduct(product: product[index]);
+                              return CardAllProduct(product: product[index],title: 'search',);
                             },
                             separatorBuilder: (context, index) => Gap(15),
                             itemCount: product.length,

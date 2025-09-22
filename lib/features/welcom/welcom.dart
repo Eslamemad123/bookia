@@ -4,10 +4,7 @@ import 'package:bookia/core/routes/route.dart';
 import 'package:bookia/core/utils/app%20assets.dart';
 import 'package:bookia/core/utils/app%20color.dart';
 import 'package:bookia/core/utils/textStyle.dart';
-import 'package:bookia/features/auth/presentation/pages/login/page/loginScreen.dart';
-import 'package:bookia/features/auth/presentation/pages/register/Register.dart';
 import 'package:bookia/features/splash/widget/start_screen_logo.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Welcom_Screen extends StatelessWidget {
@@ -51,10 +48,6 @@ class Welcom_Screen extends StatelessWidget {
                 onPressed: () {
                   pushTo(context, Routes.register);
                 },
-                child: Text(
-                  'ٌRegister',
-                  style: Text_Style.getText15(color: App_Color.black1),
-                ),
                 style: ElevatedButton.styleFrom(
                   elevation: 0,
                   backgroundColor: App_Color.white,
@@ -63,6 +56,10 @@ class Welcom_Screen extends StatelessWidget {
 
                     borderRadius: BorderRadius.circular(8),
                   ),
+                ),
+                child: Text(
+                  'ٌRegister',
+                  style: Text_Style.getText15(color: App_Color.black1),
                 ),
               ),
             ),
