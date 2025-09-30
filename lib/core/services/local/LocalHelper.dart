@@ -1,11 +1,16 @@
 import 'dart:convert';
 
+import 'package:bookia/features/Cart/Data/model/responce/cart_response/cart_response/cart_item.dart';
+import 'package:bookia/features/Home/data/model/books_response/product.dart';
 import 'package:bookia/features/auth/data/models/response/auth_response/data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Local_helper {
   static late SharedPreferences pref;
   static String kUserData = 'user_data';
+  static String KWishList = 'wish_list';
+  static String KCart = 'cart';
+
   static init() async {
     pref = await SharedPreferences.getInstance();
   }
@@ -20,13 +25,48 @@ class Local_helper {
     await pref.setString(kUserData, dataAsString);
   }
 
-  static Future<User_Data?> getUserData() async {
+  static User_Data? getUserData() {
     var data = pref.getString(kUserData);
     if (data == null) return null;
 
     var dataAsJson = jsonDecode(data);
 
     return User_Data.fromJson(dataAsJson);
+  }
+
+    static User_Data? deleteUserData() {
+    var data = pref.remove(kUserData);
+    if (data == null) return null;
+  }
+
+
+  //set & get Wish List
+  static setWishList(List<Product>? books) async {
+    if (books == null) return;
+    var listOfString = books.map((e) => jsonEncode(e.toJson())).toList();
+
+    await pref.setStringList(KWishList, listOfString);
+  }
+
+  static List<Product>? getWishList() {
+    var data = pref.getStringList(KWishList); //list os string
+    if (data == null) return null;
+    var json = data.map((e) => Product.fromJson(jsonDecode(e))).toList();
+    return json;
+  }
+
+  // set & get Cart
+  static setCart(List<CartItem>? books) async {
+    if (books == null) return;
+    var listOfString = books.map((e) => jsonEncode(e.toJson())).toList();
+    await pref.setStringList(KCart, listOfString);
+  }
+
+  static List<CartItem>? getCart() {
+    var data = pref.getStringList(KCart); //list os string
+    if (data == null) return null;
+    var json = data.map((e) => CartItem.fromJson(jsonDecode(e))).toList();
+    return json;
   }
 
   //Set

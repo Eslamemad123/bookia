@@ -37,138 +37,142 @@ class _Login_ScreenState extends State<Login_Screen> {
             key: cubit.formKeyLogin,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Gap(30),
-                  Header_Auth(title: 'Welcome back! Glad \nto see you, Again!'),
-                  Gap(30),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Gap(30),
+                    Header_Auth(
+                      title: 'Welcome back! Glad \nto see you, Again!',
+                    ),
+                    Gap(30),
 
-                  Form_Filed(
-                    text: 'Login',
-                    controller: cubit.emailLogin,
-                    validator: (value) {
-                      if (value!.isEmpty ?? true) {
-                        return 'Please enter your Email';
-                      }
-                      return null;
-                    },
-                  ),
-                  Gap(25),
+                    Form_Filed(
+                      text: 'Login',
+                      controller: cubit.emailLogin,
+                      validator: (value) {
+                        if (value!.isEmpty ?? true) {
+                          return 'Please enter your Email';
+                        }
+                        return null;
+                      },
+                    ),
+                    Gap(25),
 
-                  Form_Filed(
-                    text: 'Password',
-                    icon: true,
-                    obscureText: true,
-                    controller: cubit.passwordLogin,
-                    validator: (value) {
-                      if (value!.isEmpty ?? true) {
-                        return 'Please enter your Password';
-                      }
-                      return null;
-                    },
-                  ),
-                  Gap(15),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 22),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    Form_Filed(
+                      text: 'Password',
+                      icon: true,
+                      obscureText: true,
+                      controller: cubit.passwordLogin,
+                      validator: (value) {
+                        if (value!.isEmpty ?? true) {
+                          return 'Please enter your Password';
+                        }
+                        return null;
+                      },
+                    ),
+                    Gap(15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              pushReplacement(context, Routes.forgetPassword);
+                            },
+                            child: Text(
+                              'Forget Password',
+                              style: Text_Style.getText14(
+                                color: App_Color.textgreydark,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Gap(30),
+                    Main_Button(
+                      title: 'Login',
+                      onPress: () {
+                        if (cubit.formKeyLogin.currentState?.validate() ??
+                            false) {
+                          cubit.login();
+                        }
+                      },
+                      isLoading: cubit.isLoading,
+                    ),
+
+                    Gap(40),
+                    Row(
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            pushReplacement(context, Routes.forgetPassword);
-                          },
+                        Expanded(
+                          child: Divider(
+                            thickness: 1,
+                            endIndent: 15,
+                            indent: 22,
+                            color: App_Color.borderFormFiled,
+                          ),
+                        ),
+                        Center(
                           child: Text(
-                            'Forget Password',
+                            'Or login with',
                             style: Text_Style.getText14(
                               color: App_Color.textgreydark,
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  Gap(30),
-                  Main_Button(
-                    title: 'Login',
-                    onPress: () {
-                      if (cubit.formKeyLogin.currentState?.validate() ??
-                          false) {
-                        cubit.login();
-                      }
-                    },
-                    isLoading: cubit.isLoading,
-                  ),
-
-                  Gap(40),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          thickness: 1,
-                          endIndent: 15,
-                          indent: 22,
-                          color: App_Color.borderFormFiled,
-                        ),
-                      ),
-                      Center(
-                        child: Text(
-                          'Or login with',
-                          style: Text_Style.getText14(
-                            color: App_Color.textgreydark,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          thickness: 1,
-                          endIndent: 22,
-                          indent: 15,
-                          color: App_Color.borderFormFiled,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Gap(20),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 22),
-                    child: Row(
-                      spacing: 8,
-                      children: [
                         Expanded(
-                          child: LogoLogin(
-                            logo: SvgPicture.asset(App_Assets.facebookLogoSVG),
-                            onTap: () {},
-                          ),
-                        ),
-                        Expanded(
-                          child: LogoLogin(
-                            logo: SvgPicture.asset(App_Assets.googleLogoSVG),
-                            onTap: () {},
-                          ),
-                        ),
-                        Expanded(
-                          child: LogoLogin(
-                            logo: SvgPicture.asset(App_Assets.appleLogoSVG),
-                            onTap: () {},
+                          child: Divider(
+                            thickness: 1,
+                            endIndent: 22,
+                            indent: 15,
+                            color: App_Color.borderFormFiled,
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  Expanded(
-                    child: Rich_TextAuth(
-                      textBlack: 'Don\'t have an account?',
-                      textGold: 'Register Now',
-                      onPress: () {
-                        pushReplacement(context, Routes.register);
-                      },
+                    Gap(20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        spacing: 8,
+                        children: [
+                          Expanded(
+                            child: LogoLogin(
+                              logo: SvgPicture.asset(
+                                App_Assets.facebookLogoSVG,
+                              ),
+                              onTap: () {},
+                            ),
+                          ),
+                          Expanded(
+                            child: LogoLogin(
+                              logo: SvgPicture.asset(App_Assets.googleLogoSVG),
+                              onTap: () {},
+                            ),
+                          ),
+                          Expanded(
+                            child: LogoLogin(
+                              logo: SvgPicture.asset(App_Assets.appleLogoSVG),
+                              onTap: () {},
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );
+        },
+      ),
+      bottomNavigationBar: Rich_TextAuth(
+        textBlack: 'Don\'t have an account?',
+        textGold: 'Register Now',
+        onPress: () {
+          pushReplacement(context, Routes.register);
         },
       ),
     );
@@ -181,7 +185,7 @@ class _Login_ScreenState extends State<Login_Screen> {
       cubit.isLoading = false;
     } else if (state is AuthErrorState) {
       //Pop(context);
-      showErrorDialog(context, state.error);
+      show_Dialog(context, state.error);
       cubit.isLoading = false;
       // Pop(context);
     } else {

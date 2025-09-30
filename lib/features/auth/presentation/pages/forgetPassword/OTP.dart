@@ -57,7 +57,7 @@ class OTP_Screen extends StatelessWidget {
             pushReplacement(context, Routes.createNewPassword, cubit.OTP);
             cubit.isLoading = false;
           } else if (state is AuthErrorState) {
-            showErrorDialog(context, 'OTP is incorrect');
+            show_Dialog(context, 'OTP is incorrect');
             cubit.isLoading = false;
           } else {
             cubit.isLoading = true;
@@ -66,54 +66,56 @@ class OTP_Screen extends StatelessWidget {
         builder:
             (BuildContext context, Auth_State state) => Form(
               key: cubit.OTPKey,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Column(
-                  children: [
-                    Gap(30),
-                    Header_Auth(
-                      title: 'OTP Verification',
-                      subTitle:
-                          'Enter the verification code we just sent on your email address.',
-                    ),
-                    Gap(30),
-
-                    Pinput(
-                      length: 6,
-                      defaultPinTheme: defaultPinTheme,
-                      focusedPinTheme: focusedPinTheme,
-                      submittedPinTheme: submittedPinTheme,
-                      validator: (value) {
-                        if (value!.isEmpty ?? true) {
-                          return 'Please enter OTP';
-                        }
-                        return null;
-                      },
-                      pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                      showCursor: true,
-                      onCompleted: (pin) => print(pin),
-                      controller: cubit.OTP,
-                    ),
-
-                    Gap(150),
-                    Main_Button(
-                      isLoading: cubit.isLoading,
-                      title: 'Verify',
-                      onPress: () {
-                        if (cubit.OTPKey.currentState?.validate() ?? false) {
-                          log(cubit.OTP.toString());
-
-                          cubit.check_OTP();
-                        }
-                      },
-                    ),
-                    Expanded(
-                      child: Rich_TextAuth(
-                        textBlack: 'Didn’t received code?',
-                        textGold: 'Resend',
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Column(
+                    children: [
+                      Gap(30),
+                      Header_Auth(
+                        title: 'OTP Verification',
+                        subTitle:
+                            'Enter the verification code we just sent on your email address.',
                       ),
-                    ),
-                  ],
+                      Gap(30),
+
+                      Pinput(
+                        length: 6,
+                        defaultPinTheme: defaultPinTheme,
+                        focusedPinTheme: focusedPinTheme,
+                        submittedPinTheme: submittedPinTheme,
+                        validator: (value) {
+                          if (value!.isEmpty ?? true) {
+                            return 'Please enter OTP';
+                          }
+                          return null;
+                        },
+                        pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                        showCursor: true,
+                        onCompleted: (pin) => print(pin),
+                        controller: cubit.OTP,
+                      ),
+
+                      Gap(150),
+                      Main_Button(
+                        isLoading: cubit.isLoading,
+                        title: 'Verify',
+                        onPress: () {
+                          if (cubit.OTPKey.currentState?.validate() ?? false) {
+                            log(cubit.OTP.toString());
+
+                            cubit.check_OTP();
+                          }
+                        },
+                      ),
+                      Expanded(
+                        child: Rich_TextAuth(
+                          textBlack: 'Didn’t received code?',
+                          textGold: 'Resend',
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

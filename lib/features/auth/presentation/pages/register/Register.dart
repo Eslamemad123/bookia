@@ -32,82 +32,82 @@ class _Register_ScreenState extends State<Register_Screen> {
             key: cubit.FormKeyRegister,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Gap(30),
-                  Header_Auth(title: 'Hello! Register to get \n started'),
-                  Gap(40),
-                  Form_Filed(
-                    text: 'User Name',
-                    controller: cubit.name,
-                    validator: (value) {
-                      if (value!.isEmpty ?? true) {
-                        return 'Please enter your name';
-                      }
-                      return null;
-                    },
-                  ),
-                  Gap(15),
-                  Form_Filed(
-                    text: 'Email',
-                    controller: cubit.emailRegister,
-                    validator: (value) {
-                      if (value!.isEmpty ?? true) {
-                        return 'Please enter your name';
-                      }
-                      return null;
-                    },
-                  ),
-                  Gap(15),
-                  Form_Filed(
-                    text: 'Password',
-                    icon: true,
-                    obscureText: true,
-                    controller: cubit.passRegister,
-                    validator: (value) {
-                      if (value!.isEmpty ?? true) {
-                        return 'Please enter your name';
-                      }
-                      return null;
-                    },
-                  ),
-                  Gap(15),
-                  Form_Filed(
-                    text: 'Confirm Password',
-                    obscureText: true,
-                    icon: true,
-                    controller: cubit.confirmPass,
-                    validator: (value) {
-                      if (value!.isEmpty ?? true) {
-                        return 'Please enter your name';
-                      }
-                      return null;
-                    },
-                  ),
-                  Gap(40),
-                  Main_Button(
-                    title: 'Register',
-                    onPress: () {
-                      if (cubit.FormKeyRegister.currentState!.validate()) {
-                        cubit.register();
-                      }
-                    },
-                    isLoading: cubit.isLoading,
-                  ),
-                  Expanded(
-                    child: Rich_TextAuth(
-                      textBlack: 'Already have an account?',
-                      textGold: 'Login Now',
-                      onPress: () {
-                        pushReplacement(context, Routes.login);
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Gap(30),
+                    Header_Auth(title: 'Hello! Register to get \n started'),
+                    Gap(40),
+                    Form_Filed(
+                      text: 'User Name',
+                      controller: cubit.name,
+                      validator: (value) {
+                        if (value!.isEmpty ?? true) {
+                          return 'Please enter your name';
+                        }
+                        return null;
                       },
                     ),
-                  ),
-                ],
+                    Gap(15),
+                    Form_Filed(
+                      text: 'Email',
+                      controller: cubit.emailRegister,
+                      validator: (value) {
+                        if (value!.isEmpty ?? true) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      },
+                    ),
+                    Gap(15),
+                    Form_Filed(
+                      text: 'Password',
+                      icon: true,
+                      obscureText: true,
+                      controller: cubit.passRegister,
+                      validator: (value) {
+                        if (value!.isEmpty ?? true) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      },
+                    ),
+                    Gap(15),
+                    Form_Filed(
+                      text: 'Confirm Password',
+                      obscureText: true,
+                      icon: true,
+                      controller: cubit.confirmPass,
+                      validator: (value) {
+                        if (value!.isEmpty ?? true) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      },
+                    ),
+                    Gap(40),
+                    Main_Button(
+                      title: 'Register',
+                      onPress: () {
+                        if (cubit.FormKeyRegister.currentState!.validate()) {
+                          cubit.register();
+                        }
+                      },
+                      isLoading: cubit.isLoading,
+                    ),
+                  ],
+                ),
               ),
             ),
           );
+        },
+      ),
+      bottomNavigationBar: Rich_TextAuth(
+        textBlack: 'Already have an account?',
+        textGold: 'Login Now',
+        onPress: () {
+          pushReplacement(context, Routes.login);
         },
       ),
     );
@@ -119,7 +119,7 @@ class _Register_ScreenState extends State<Register_Screen> {
       pushReplacement(context, Routes.login);
       cubit.isLoading = false;
     } else if (state is AuthErrorState) {
-      showErrorDialog(context, state.error);
+      show_Dialog(context, state.error);
       cubit.isLoading = false;
     } else {
       cubit.isLoading = true;

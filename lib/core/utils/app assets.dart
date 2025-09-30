@@ -27,4 +27,6 @@ class App_Assets {
 
   static const loadingJson = 'assets/images/loading.json';
   static const loadingJson2 = 'assets/images/Loading Dots In Yellow.json';
+  static const EmptyLottie = 'assets/images/Empty.json';
+  static const LoadingBook = 'assets/images/LoadingBook.json';
 }

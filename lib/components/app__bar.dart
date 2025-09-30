@@ -5,17 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class App_Bar extends StatelessWidget implements PreferredSizeWidget {
-  const App_Bar({
+  App_Bar({
     super.key,
     this.title = '',
     this.leading = false,
-    this.action = false,
-    this.icon,
+    //this.action = false,
+    //this.icon,
+    // this.onPress,
   });
   final String title;
   final bool leading;
-  final bool action;
-  final String? icon;
+  //final bool action;
+  //final String? icon;
+  //void Function()? onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +26,7 @@ class App_Bar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       backgroundColor: App_Color.white,
       title: Text(title, style: Text_Style.getText25()),
-      actions:
-          action
-              ? [
-                Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: SvgPicture.asset(icon ?? App_Assets.cartSVG),
-                  ),
-                ),
-              ]
-              : null,
+
       centerTitle: true,
       leadingWidth: 75,
       leading:

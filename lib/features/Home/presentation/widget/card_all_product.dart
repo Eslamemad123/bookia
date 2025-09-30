@@ -6,6 +6,7 @@ import 'package:bookia/core/utils/textStyle.dart';
 import 'package:bookia/features/Home/data/model/books_response/product.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CardAllProduct extends StatelessWidget {
   CardAllProduct({super.key, required this.product, required this.title});
@@ -15,10 +16,7 @@ class CardAllProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        pushTo(context, Routes.Details, {
-          'product': product,
-          'sourse': '$title',
-        });
+        pushTo(context, Routes.Details, {'product': product, 'sourse': title});
       },
       child: Container(
         height: 300,
@@ -34,12 +32,17 @@ class CardAllProduct extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    product.image ??
-                        'https://assets.tracegains.net/resources/img/global/no_image.jpg',
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: 200,
+                  child: Hero(
+                    tag: '${product.id}_$title',
+
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          product.image ??
+                          'https://assets.tracegains.net/resources/img/global/no_image.jpg',
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: 200,
+                    ),
                   ),
                 ),
               ),

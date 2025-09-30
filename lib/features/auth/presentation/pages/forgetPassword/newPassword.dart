@@ -30,61 +30,64 @@ class _NewPassword_ScreenState extends State<NewPassword_Screen> {
             pushTo(context, Routes.passwordChanged);
             cubit.isLoading = false;
           } else if (state is AuthErrorState) {
-            showErrorDialog(context, state.error);
+            show_Dialog(context, state.error);
             cubit.isLoading = false;
           } else {
             cubit.isLoading = true;
           }
         },
         builder: (context, state) {
-          return Form(
-            key: cubit.FormKeyNewPass,
-            child: Column(
-              children: [
-                Gap(30),
-                Header_Auth(
-                  title: 'Create new password',
-                  subTitle:
-                      'Your new password must be unique from those previously used.',
-                ),
-                Gap(40),
-                Form_Filed(
-                  text: 'New Password',
-                  icon: true,
-                  obscureText: true,
-                  controller: cubit.Newpass,
-                  validator: (value) {
-                    if (value!.isEmpty ?? false) {
-                      return 'Please Enter New Password';
-                    }
-                    return null;
-                  },
-                ),
-                Gap(20),
-                Form_Filed(
-                  text: 'Confirm Password',
-                  icon: true,
-                  obscureText: true,
-                  controller: cubit.confirmNewPass,
-                  validator: (value) {
-                    if (value!.isEmpty ?? false) {
-                      return 'Please Enter Confirm Password';
-                    }
-                    return null;
-                  },
-                ),
-                Gap(40),
-                Main_Button(
-                  isLoading: cubit.isLoading,
-                  title: 'Reset Password',
-                  onPress: () {
-                    if (cubit.FormKeyNewPass.currentState?.validate() ?? true) {
-                      cubit.OTP = widget.otp;
-                      cubit.new_password();
-                    }
-                  },
-                ),
-              ],
+          return SingleChildScrollView(
+            child: Form(
+              key: cubit.FormKeyNewPass,
+              child: Column(
+                children: [
+                  Gap(30),
+                  Header_Auth(
+                    title: 'Create new password',
+                    subTitle:
+                        'Your new password must be unique from those previously used.',
+                  ),
+                  Gap(40),
+                  Form_Filed(
+                    text: 'New Password',
+                    icon: true,
+                    obscureText: true,
+                    controller: cubit.Newpass,
+                    validator: (value) {
+                      if (value!.isEmpty ?? false) {
+                        return 'Please Enter New Password';
+                      }
+                      return null;
+                    },
+                  ),
+                  Gap(20),
+                  Form_Filed(
+                    text: 'Confirm Password',
+                    icon: true,
+                    obscureText: true,
+                    controller: cubit.confirmNewPass,
+                    validator: (value) {
+                      if (value!.isEmpty ?? false) {
+                        return 'Please Enter Confirm Password';
+                      }
+                      return null;
+                    },
+                  ),
+                  Gap(40),
+                  Main_Button(
+                    isLoading: cubit.isLoading,
+                    title: 'Reset Password',
+                    onPress: () {
+                      if (cubit.FormKeyNewPass.currentState?.validate() ??
+                          true) {
+                        cubit.OTP = widget.otp;
+                        cubit.new_password();
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           );
         },

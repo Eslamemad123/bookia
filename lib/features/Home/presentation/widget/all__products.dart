@@ -43,7 +43,10 @@ class All_Products extends StatelessWidget {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return CardAllProduct(product: product[index],title: 'AllProduct',);
+              return CardAllProduct(
+                product: product[index],
+                title: 'AllProduct',
+              );
             },
             separatorBuilder: (context, index) => Gap(15),
             itemCount: product.length,

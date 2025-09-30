@@ -6,10 +6,7 @@ import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:gap/gap.dart';
 
 class SliderFilter extends StatelessWidget {
-  const SliderFilter({
-    super.key,
-    required this.cubit,
-  });
+  const SliderFilter({super.key, required this.cubit});
 
   final Home_Cubit cubit;
 
@@ -23,9 +20,7 @@ class SliderFilter extends StatelessWidget {
             Text(
               textAlign: TextAlign.left,
               'Filter with Price :',
-              style: Text_Style.getText18(
-                color: App_Color.textgreydark,
-              ),
+              style: Text_Style.getText18(color: App_Color.textgreydark),
             ),
           ],
         ),
@@ -38,56 +33,34 @@ class SliderFilter extends StatelessWidget {
             ),
             trackBar: FlutterSliderTrackBar(
               activeTrackBar: BoxDecoration(
-                color:
-                    App_Color
-                        .goldPrimary, // لون الجزء النشط (المحدد)
-                borderRadius: BorderRadius.circular(
-                  10,
-                ),
+                color: App_Color.goldPrimary, // لون الجزء النشط (المحدد)
+                borderRadius: BorderRadius.circular(10),
               ),
               inactiveTrackBar: BoxDecoration(
-                color:
-                    App_Color
-                        .borderFormFiled, // لون الجزء غير المحدد
-                borderRadius: BorderRadius.circular(
-                  10,
-                ),
+                color: App_Color.borderFormFiled, // لون الجزء غير المحدد
+                borderRadius: BorderRadius.circular(10),
               ),
             ),
             tooltip: FlutterSliderTooltip(
               textStyle: TextStyle(
-                color:
-                    App_Color.goldPrimary, // لون النص
+                color: App_Color.goldPrimary, // لون النص
                 fontWeight: FontWeight.bold,
               ),
               boxStyle: FlutterSliderTooltipBox(
                 decoration: BoxDecoration(
-                  color:
-                      App_Color
-                          .formBackGroundColor, // خلفية النص
-                  borderRadius: BorderRadius.circular(
-                    8,
-                  ),
+                  color: App_Color.formBackGroundColor, // خلفية النص
+                  borderRadius: BorderRadius.circular(8),
                 ),
               ),
             ),
-            values: [
-              cubit.lowerValueSearch,
-              cubit.upperValueSearch,
-            ],
+            values: [cubit.lowerValueSearch, cubit.upperValueSearch],
             rangeSlider: true,
             max: 600,
             min: 0,
-            onDragCompleted: (
-              handlerIndex,
-              lowerValue,
-              upperValue,
-            ) {
+            onDragCompleted: (handlerIndex, lowerValue, upperValue) {
               cubit.lowerValueSearch = lowerValue;
               cubit.upperValueSearch = upperValue;
-              cubit.getSearchData(
-                cubit.searchTitle.text,
-              );
+              cubit.getSearchData(cubit.searchTitle.text);
             },
           ),
         ),

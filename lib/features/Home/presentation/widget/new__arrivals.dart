@@ -41,7 +41,7 @@ class New_Arrive extends StatelessWidget {
           height: 280,
           child: ListView.separated(
             itemBuilder: (context, index) {
-              return Book_Card(product: product[index],title: 'newArrivals',);
+              return Book_Card(product: product[index], title: 'newArrivals');
             },
             separatorBuilder: (context, index) => Gap(10),
             itemCount: product.length,

@@ -12,4 +12,5 @@ class App_Color {
   static Color white = Color(0xFFFFFFFF);
   static Color borderFormFiled = Color(0xFFE8ECF4);
   static Color red = Color.fromARGB(255, 255, 91, 91);
+  static Color green = Color.fromARGB(255, 0, 190, 16);
 }

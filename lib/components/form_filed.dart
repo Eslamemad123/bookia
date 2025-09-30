@@ -2,6 +2,7 @@ import 'package:bookia/core/utils/app%20assets.dart';
 import 'package:bookia/core/utils/app%20color.dart';
 import 'package:bookia/core/utils/textStyle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Form_Filed extends StatefulWidget {
@@ -12,6 +13,7 @@ class Form_Filed extends StatefulWidget {
     this.controller,
     required this.text,
     this.icon = false,
+    this.inputFormatters,
   });
   bool obscureText;
   final String? Function(String?)? validator;
@@ -19,7 +21,7 @@ class Form_Filed extends StatefulWidget {
   final String text;
   final bool icon;
   bool eyeIcon = false;
-
+  final List<TextInputFormatter>? inputFormatters;
   @override
   State<Form_Filed> createState() => _Form_FiledState();
 }
@@ -30,6 +32,7 @@ class _Form_FiledState extends State<Form_Filed> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 22),
       child: TextFormField(
+        inputFormatters: widget.inputFormatters,
         controller: widget.controller,
         validator: widget.validator,
         obscureText: widget.obscureText,

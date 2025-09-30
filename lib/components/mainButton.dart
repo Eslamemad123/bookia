@@ -15,16 +15,18 @@ class Main_Button extends StatelessWidget {
     this.color,
     this.radius,
     this.padding = 22,
+    this.isEnable = true,
   });
 
   final double? height;
   final double? width;
   final String? title;
-  final Function() onPress;
+  final Function()? onPress;
   final bool isLoading;
   final Color? color;
   final double? radius;
   final double padding;
+  final bool isEnable;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,12 @@ class Main_Button extends StatelessWidget {
                   ? Lottie.asset(App_Assets.loadingJson2)
                   : Text(
                     title!,
-                    style: Text_Style.getText15(color: App_Color.white),
+                    style: Text_Style.getText15(
+                      color:
+                          (onPress == null)
+                              ? App_Color.black3
+                              : App_Color.white,
+                    ),
                   ),
         ),
       ),

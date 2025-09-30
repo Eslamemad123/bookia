@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Filter extends StatelessWidget {
-  const Filter({
-    super.key,
-  });
+  const Filter({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +15,13 @@ class Filter extends StatelessWidget {
         color: App_Color.borderFormFiled,
         borderRadius: BorderRadius.circular(15),
       ),
-    
+
       child: Center(
         child: SvgPicture.asset(
           App_Assets.Filter,
           width: 40,
           height: 40,
-          colorFilter: ColorFilter.mode(
-            App_Color.goldPrimary,
-            BlendMode.srcIn,
-          ),
+          colorFilter: ColorFilter.mode(App_Color.goldPrimary, BlendMode.srcIn),
         ),
       ),
     );

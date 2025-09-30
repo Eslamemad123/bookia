@@ -32,56 +32,59 @@ class _ForgetPass_ScreenState extends State<ForgetPass_Screen> {
             pushReplacement(context, Routes.OTP);
             cubit.isLoading = false;
           } else if (state is AuthErrorState) {
-            showErrorDialog(context, state.error);
+            show_Dialog(context, state.error);
             cubit.isLoading = false;
           } else {
             cubit.isLoading = true;
           }
         },
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: Form(
-              key: cubit.FormKeyPass,
-              child: Column(
-                children: [
-                  Gap(30),
-                  Header_Auth(
-                    title: 'Forgot ord?',
-                    subTitle:
-                        'Don\'t worry! It occurs. Please enter the email address linked with your account.',
-                  ),
-                  Gap(40),
-                  Form_Filed(
-                    text: 'Enter Your Email',
-                    controller: cubit.emailForgetPassword,
-                    validator: (value) {
-                      if (value!.isEmpty ?? false) {
-                        return 'Please Enter Your Email';
-                      }
-                      return null;
-                    },
-                  ),
-                  Gap(40),
-                  Main_Button(
-                    isLoading: cubit.isLoading,
-                    title: 'Send Code',
-                    onPress: () {
-                      if (cubit.FormKeyPass.currentState?.validate() ?? true) {
-                        cubit.forget_password();
-                      }
-                    },
-                  ),
-                  Expanded(
-                    child: Rich_TextAuth(
-                      textBlack: 'Remember Password?',
-                      textGold: 'Login',
-                      onPress: () {
-                        Navigator.pop(context);
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Form(
+                key: cubit.FormKeyPass,
+                child: Column(
+                  children: [
+                    Gap(30),
+                    Header_Auth(
+                      title: 'Forgot ord?',
+                      subTitle:
+                          'Don\'t worry! It occurs. Please enter the email address linked with your account.',
+                    ),
+                    Gap(40),
+                    Form_Filed(
+                      text: 'Enter Your Email',
+                      controller: cubit.emailForgetPassword,
+                      validator: (value) {
+                        if (value!.isEmpty ?? false) {
+                          return 'Please Enter Your Email';
+                        }
+                        return null;
                       },
                     ),
-                  ),
-                ],
+                    Gap(40),
+                    Main_Button(
+                      isLoading: cubit.isLoading,
+                      title: 'Send Code',
+                      onPress: () {
+                        if (cubit.FormKeyPass.currentState?.validate() ??
+                            true) {
+                          cubit.forget_password();
+                        }
+                      },
+                    ),
+                    Expanded(
+                      child: Rich_TextAuth(
+                        textBlack: 'Remember Password?',
+                        textGold: 'Login',
+                        onPress: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );

@@ -1,4 +1,5 @@
 import 'package:bookia/components/app__bar.dart';
+import 'package:bookia/core/extentions/debouncer%20.dart';
 import 'package:bookia/core/utils/app%20color.dart';
 import 'package:bookia/features/Home/data/model/books_response/product.dart';
 import 'package:bookia/features/Home/presentation/cubit/home_cubit.dart';
@@ -84,7 +85,10 @@ class _Search_BookState extends State<Search_Book> {
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return CardAllProduct(product: product[index],title: 'search',);
+                              return CardAllProduct(
+                                product: product[index],
+                                title: 'search',
+                              );
                             },
                             separatorBuilder: (context, index) => Gap(15),
                             itemCount: product.length,

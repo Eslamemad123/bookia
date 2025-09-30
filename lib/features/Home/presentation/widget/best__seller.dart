@@ -41,7 +41,7 @@ class Best_Seller extends StatelessWidget {
           height: 280,
           child: ListView.separated(
             itemBuilder: (context, index) {
-              return Book_Card(product: product[index],title: 'bestSaller',);
+              return Book_Card(product: product[index], title: 'bestSaller');
             },
             separatorBuilder: (context, index) => Gap(10),
             itemCount: product.length,
