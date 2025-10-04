@@ -8,7 +8,6 @@ import 'package:bookia/core/utils/app%20assets.dart';
 import 'package:bookia/core/utils/app%20color.dart';
 import 'package:bookia/features/profile/presentation/cubit/profile_Cubit.dart';
 import 'package:bookia/features/profile/presentation/cubit/profile_state.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,13 +15,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 class EditProfile_Screen extends StatelessWidget {
-   EditProfile_Screen({super.key});
+  EditProfile_Screen({super.key});
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<Profile_Cubit, Profile_State>(
       listener: (context, state) {
-        
         if (state is ProfileLoading) {
           isLoading = true;
         } else if (state is ProfileSuccess) {
@@ -34,7 +32,6 @@ class EditProfile_Screen extends StatelessWidget {
         }
       },
       builder: (context, state) {
-
         var cubit = context.read<Profile_Cubit>();
         return Scaffold(
           appBar: App_Bar(leading: true, title: 'Edit Profile'),
@@ -88,7 +85,7 @@ class EditProfile_Screen extends StatelessWidget {
                   ),
                   Gap(50),
                   Form_Filed(
-                                        controller: cubit.FullName,
+                    controller: cubit.FullName,
 
                     text: 'Full Name',
                     validator: (value) {
@@ -102,7 +99,7 @@ class EditProfile_Screen extends StatelessWidget {
                     controller: cubit.Phone,
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(11),
-                      FilteringTextInputFormatter.digitsOnly
+                      FilteringTextInputFormatter.digitsOnly,
                     ],
                     text: 'Phone',
                     validator: (value) {
@@ -113,7 +110,7 @@ class EditProfile_Screen extends StatelessWidget {
                   ),
                   Gap(20),
                   Form_Filed(
-                                        controller: cubit.Address,
+                    controller: cubit.Address,
 
                     text: 'Address',
                     validator: (value) {

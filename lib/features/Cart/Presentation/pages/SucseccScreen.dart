@@ -29,7 +29,7 @@ class Sucsecc_Screen extends StatelessWidget {
           Main_Button(
             title: 'Back To Home',
             onPress: () {
-              PupushAndRemoveUntilsh(context, Routes.Main,0);
+              PupushAndRemoveUntilsh(context, Routes.Main,);
             },
           ),
         ],

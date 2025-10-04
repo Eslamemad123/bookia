@@ -21,7 +21,10 @@ class Cart_Repo {
       if (res.statusCode == 201) {
         var data = CartResponse.fromJson(res.data);
         Local_helper.setCart(data.data?.cartItem);
-
+        Local_helper.setString(
+          Local_helper.KTotalCart,
+          data?.data?.total ?? '',
+        );
         return data;
       } else {
         return null;
@@ -44,6 +47,10 @@ class Cart_Repo {
       if (res.statusCode == 200) {
         var data = CartResponse.fromJson(res.data);
         Local_helper.setCart(data.data?.cartItem);
+        Local_helper.setString(
+          Local_helper.KTotalCart,
+          data?.data?.total ?? '',
+        );
 
         return data;
       } else {
@@ -67,7 +74,10 @@ class Cart_Repo {
       if (res.statusCode == 200) {
         var data = CartResponse.fromJson(res.data);
         Local_helper.setCart(data.data?.cartItem);
-
+        Local_helper.setString(
+          Local_helper.KTotalCart,
+          data?.data?.total ?? '',
+        );
         return data;
       } else {
         return null;
@@ -104,6 +114,12 @@ class Cart_Repo {
       endPoint: API_EndPoint.CheckOut,
       headers: {'Authorization': 'Bearer ${Local_helper.getUserData()?.token}'},
     );
+    var data = CartResponse.fromJson(res.data);
+    //Local_helper.setCart(data.data?.cartItem);
+       // Local_helper.setString(
+         // Local_helper.KTotalCart,
+         // data?.data?.total ?? '',
+      //  );
     if (res.statusCode == 200) {
       return true;
     } else {
@@ -130,7 +146,7 @@ class Cart_Repo {
         return false;
       }
     } on DioException catch (e) {
-      log("Error: ${e.response?.data}");
+      log("Error: ${e.toString()}");
     }
   }
 }

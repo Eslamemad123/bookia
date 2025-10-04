@@ -46,12 +46,19 @@ class Profile_Cubit extends Cubit<Profile_State> {
     try {
       emit(ProfileLoading());
       //await Future.delayed(Duration(seconds: 1));
-      var res = await Profile_Repo.showProfile();
-      if (res != null) {
-        showProfileData = res.data;
+      var data = Local_helper.getProfileData();
+     
+      if (data != null) {
+        showProfileData = data;
         emit(ProfileSuccess());
       } else {
-        emit(ProfileError());
+        var res = await Profile_Repo.showProfile();
+        if (res != null) {
+          showProfileData = res.data;
+          emit(ProfileSuccess());
+        } else {
+          emit(ProfileError());
+        }
       }
     } on Exception catch (e) {
       log(e.toString());
@@ -79,6 +86,8 @@ class Profile_Cubit extends Cubit<Profile_State> {
     bool? res = await Profile_Repo.deleteAccount(CurrentPassword.text);
     if (res ?? false) {
       Local_helper.deleteUserData();
+      Local_helper.remove(Local_helper.KProfile);
+
       emit(ProfileSuccess());
     } else {
       emit(ProfileError());
@@ -92,6 +101,7 @@ class Profile_Cubit extends Cubit<Profile_State> {
 
     if (res ?? false) {
       Local_helper.deleteUserData();
+      Local_helper.remove(Local_helper.KProfile);
       emit(LogOutSuccess());
     } else {
       emit(ProfileError());

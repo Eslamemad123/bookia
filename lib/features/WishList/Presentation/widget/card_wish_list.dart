@@ -41,12 +41,16 @@ class Card_wishList extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      product.image ?? '',
-                      height: 120,
-                      fit: BoxFit.cover,
+                  child: SizedBox(
+                    height: 120,
+                    width:  100,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                        product.image ?? '',
+                        height: 120,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),

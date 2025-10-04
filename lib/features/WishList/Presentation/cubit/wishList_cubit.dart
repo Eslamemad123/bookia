@@ -27,12 +27,15 @@ class WishList_cubit extends Cubit<wishList_State> {
 
   getWishList() async {
     emit(wishListLoading());
-    var res = await WishList_Repo.getWishList();
-    if (res != null) {
-      wishListBooks = (res as WishListResponse).data?.data ?? [];
+    //var res = await WishList_Repo.getWishList();
+   wishListBooks= Local_helper.getWishList()??[];
       emit(wishListSuccess());
+
+    /*if (res != null) {
+          wishListBooks = (res as WishListResponse).data?.data ?? [];
+
     } else {
       emit(wishListError());
-    }
+    }*/
   }
 }

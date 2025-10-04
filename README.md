@@ -54,3 +54,32 @@
 <p float="left">
     <img src="Screen App\searchWithFilter.png" width="25%" />
 </p>
+
+------------------------------------------------------------------------------------
+<p float="left">
+    <img src="Screen App\details.png" width="25%" />
+</p>
+
+<p float="left">
+    <img src="Screen App\wishList.png" width="25%" />
+</p>
+
+<p float="left">
+    <img src="Screen App\cart.png" width="25%" />
+</p>
+<p float="left">
+    <img src="Screen App\placeOrder.png" width="25%" />
+</p>
+<p float="left">
+    <img src="Screen App\profile.png" width="25%" />
+</p>
+<p float="left">
+    <img src="Screen App\orderHistory.png" width="25%" />
+</p>
+
+<p float="left">
+    <img src="Screen App\editProfile.png" width="25%" />
+</p>
+<p float="left">
+    <img src="Screen App\editPassword.png" width="25%" />
+</p>

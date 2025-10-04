@@ -45,15 +45,22 @@ class Cart_cubit extends Cubit<Cart_State> {
 
   getCart() async {
     emit(CartLoading());
-    var res = await Cart_Repo.getCart().then((value) {
-      if (value != null) {
-        CartBooks = value.data?.cartItem ?? [];
-        TotalPrice = value.data?.total ?? '0';
-        emit(CartSuccess());
-      } else {
-        emit(CartError());
-      }
-    });
+    TotalPrice = Local_helper.getString(Local_helper.KTotalCart) ?? '';
+    if (Local_helper.getCart() != null) {
+      CartBooks = Local_helper.getCart() ?? [];
+      emit(CartSuccess());
+    } else {
+      var res = await Cart_Repo.getCart().then((value) {
+        if (value != null) {
+          TotalPrice = value?.data?.total ?? '0';
+      emit(CartSuccess());
+
+          //CartBooks = value.data?.cartItem ?? [];
+        } else {
+          emit(CartError());
+        }
+      });
+    }
   }
 
   addToCart(num id) async {
@@ -112,6 +119,7 @@ class Cart_cubit extends Cubit<Cart_State> {
       );
       bool res = await Cart_Repo.placeOrder(params) ?? false;
       if (res) {
+        Local_helper.remove(Local_helper.KCart);
         emit(CheckoutSuccessState());
       } else {
         emit(CartError());

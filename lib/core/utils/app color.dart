@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-
 class App_Color {
   static Color goldPrimary = Color(0xFFbfa054);
   static Color textgreyForm = Color(0xFF8391A1);

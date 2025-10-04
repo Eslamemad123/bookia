@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:bookia/features/Cart/Data/model/responce/cart_response/cart_response/cart_item.dart';
 import 'package:bookia/features/Home/data/model/books_response/product.dart';
 import 'package:bookia/features/auth/data/models/response/auth_response/data.dart';
+import 'package:bookia/features/profile/data/model/response/profile_response/data.dart';
+import 'package:bookia/features/profile/data/model/response/profile_response/profile_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Local_helper {
@@ -10,6 +12,8 @@ class Local_helper {
   static String kUserData = 'user_data';
   static String KWishList = 'wish_list';
   static String KCart = 'cart';
+  static String KTotalCart = 'total_cart';
+  static String KProfile = 'profile';
 
   static init() async {
     pref = await SharedPreferences.getInstance();
@@ -37,6 +41,27 @@ class Local_helper {
     static User_Data? deleteUserData() {
     var data = pref.remove(kUserData);
     if (data == null) return null;
+  }
+
+
+  //set & get Profile
+
+    static setProfileData(DataShowProfile? profileData) async {
+    if (profileData == null) return;
+    var DataAsjson = profileData.toJson();
+
+    var dataAsString = jsonEncode(DataAsjson);
+
+    await pref.setString(KProfile, dataAsString);
+  }
+
+  static DataShowProfile? getProfileData() {
+    var data = pref.getString(KProfile);
+    if (data == null) return null;
+
+    var dataAsJson = jsonDecode(data);
+
+    return DataShowProfile.fromJson(dataAsJson);
   }
 
 
@@ -68,6 +93,8 @@ class Local_helper {
     var json = data.map((e) => CartItem.fromJson(jsonDecode(e))).toList();
     return json;
   }
+
+
 
   //Set
   static Future<bool> setString(String key, String value) {

@@ -13,17 +13,16 @@ class TextForm extends StatefulWidget {
 }
 
 class _TextFormState extends State<TextForm> {
-  final TextEditingController _searchController = TextEditingController();
 
   final Debouncer _debouncer = Debouncer(milliseconds: 700);
 
   @override
   void initState() {
     super.initState();
-    _searchController.addListener(() {
+    widget.cubit.searchTitle.addListener(() {
       // Debounce the search query
       _debouncer.run(
-        () => context.read<Home_Cubit>().getSearchData(_searchController.text),
+        () => context.read<Home_Cubit>().getSearchData(widget.cubit.searchTitle.text),
       );
     });
   }
@@ -46,7 +45,7 @@ class _TextFormState extends State<TextForm> {
             // no border
           ),
         ),
-        controller: _searchController,
+        controller: widget.cubit.searchTitle,
         onChanged: (value) {
           _debouncer.run(() {
             widget.cubit.getSearchData(value);
