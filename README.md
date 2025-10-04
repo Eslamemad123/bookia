@@ -71,14 +71,15 @@
     <img src="Screen App\placeOrder.png" width="25%" />
 </p>
 <p float="left">
+    <img src="Screen App\governrate.png" width="25%" />
+</p>
+<p float="left">
     <img src="Screen App\profile.png" width="25%" />
 </p>
 <p float="left">
     <img src="Screen App\orderHistory.png" width="25%" />
 </p>
-<p float="left">
-    <img src="Screen App\governrate.png" width="25%" />
-</p>
+
 <p float="left">
     <img src="Screen App\editProfile.png" width="25%" />
 </p>
